@@ -25,35 +25,48 @@
 
 <body>
     <!-- Navebar/Header Section -->
-    <section>
+    <header>
         <nav class="navbar sticky-top navbar-dark bg-dark justify-content-center">
             <a class="navbar-brand font-weight-bold">Weather Dashboard</a>
         </nav>
-    </section>
+    </header>
     <section class="container">
         <div class="row">
             <!-- City Search Section -->
-            <div class="col-md-3" id="search-section">
-                <p>Search for a City:</p>
-                <input type="text" class="form-control" placeholder="City">
-                <button type="button" class="btn btn-primary">
+            <div class="col-md-3 clearfix" id="search-section">
+                <p id="search-for-city">Search for a City:</p>
+                <input type="text" class="form-control" id="search-input" placeholder="City">
+                <button type="button" class="btn btn-primary" id="search-btn">
                     <i class="fas fa-search"></i>
                 </button>
+            </div>
+            <div class="col-md-9" id="weather-info">
+                <!-- Current Weather for City Selected -->
+                <div class="row">
+                    <div class="col-md-12" id="weather-city-selected">
+                    </div>
+                </div>
+                <!-- 5-Day Forecast for City Selected -->
+                <div class="row">
+                    <div class="col-md-12" id="forcast-city-selected">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Optional JavaScript -->
+    <!-- JavaScript -->
+    <script src="./script.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
