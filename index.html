@@ -33,12 +33,22 @@
     <section class="container">
         <div class="row">
             <!-- City Search Section -->
-            <div class="col-md-3 clearfix" id="search-section">
-                <p id="search-for-city">Search for a City:</p>
-                <input type="text" class="form-control" id="search-input" placeholder="City">
-                <button type="button" class="btn btn-primary" id="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
+            <div class="col-md-3" id="search-section">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p id="search-for-city">Search for a City:</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9" id="city-search">
+                        <input type="text" class="form-control" id="search-input" placeholder="City">
+                    </div>
+                    <div class="col-md-3" id="button-search">
+                        <button type="button" class="btn btn-primary" id="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="col-md-9" id="weather-info">
                 <!-- Current Weather for City Selected -->
@@ -69,6 +79,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./script.js"></script>
 </body>
 
