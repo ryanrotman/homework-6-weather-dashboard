@@ -14,13 +14,12 @@ body {
     font-weight: bold;
 }
 
-#search-input {
-    width: 213px;
-    float: left;
+#city-search {
+    padding: 0;
 }
 
-#search-btn {
-    float: left;
+#button-search {
+    padding: 0;
 }
 
 #weather-city-selected {
