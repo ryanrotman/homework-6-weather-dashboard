@@ -36,7 +36,12 @@ $("#search-btn").on("click", function() {
         }).then(function(response) {
             console.log("OpenWeather Response: ", response)
             // Set the city, date, and icon for user selected city current weather
-            $("#city-name").html(city + " &#40;" + currentDay + "&#41; " + response.current.weather[0].icon);
+            $("#city-name").html(city + " &#40;" + currentDay + "&#41; ");
+            // Set the current weather icon for user selected city
+            var weatherIcon = $("<img>");
+            weatherIcon.attr("src", "https://openweathermap.org/img/wn/" + response.current.weather[0].icon + ".png");
+            weatherIcon.attr("alt", response.current.weather[0].description);
+            $("#city-name").append(weatherIcon);
             // Set the current temperature for user selected city
             $("#temperature").html(response.current.temp + " &#x2109;");
             // Set the current humidity for user selected city
