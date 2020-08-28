@@ -50,6 +50,20 @@ $("#search-btn").on("click", function() {
             $("#wind-speed").html(response.current.wind_speed + " MPH");
             // Set the current uv index for user selected city
             $("#uv-index").html(response.current.uvi);
+            // Set the background color of the current uv index for user selected city
+            var currentUVI = Math.floor(response.current.uvi);
+            console.log(currentUVI);
+            if (currentUVI <= 2) {
+                $("#uv-index").css("background-color", "green");
+            } else if (currentUVI >= 3 && currentUVI <= 5) {
+                $("#uv-index").css("background-color", "yellow");
+            } else if (currentUVI == 6 || currentUVI == 7) {
+                $("#uv-index").css("background-color", "orange");
+            } else if (currentUVI >= 8 && currentUVI <= 10) {
+                $("#uv-index").css("background-color", "red");
+            } else if (currentUVI >= 11) {
+                $("#uv-index").css("background-color", "violet");
+            };
         });
     }));
 });
