@@ -39,7 +39,7 @@
                         <p id="search-for-city">Search for a City:</p>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" id="city-search-section">
                     <div class="col-md-9" id="city-search">
                         <input type="text" class="form-control" id="search-input" placeholder="City">
                     </div>
@@ -47,6 +47,11 @@
                         <button type="button" class="btn btn-primary" id="search-btn">
                             <i class="fas fa-search"></i>
                         </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Empty div for saved searched city list -->
+                    <div class="col-md-12" id="city-list">
                     </div>
                 </div>
             </div>
@@ -62,8 +67,51 @@
                     </div>
                 </div>
                 <!-- 5-Day Forecast for City Selected -->
-                <div class="row">
-                    <div class="col-md-12" id="forcast-city-selected">
+                <div class="row" id="forecast-city-selected">
+                    <div class="col-md-12">
+                        <p>5-Day Forecast:</p>
+                    </div>
+                </div>
+                <div class="row" id="forecast-display-card">
+                    <div class="card col" id="day1">
+                        <div class="card-body">
+                            <h4 id="day1-date"></h4>
+                            <img id="day1-weather-icon">
+                            <p>Temp:  <span id="day1-temperature"></span></p>
+                            <p>Humidty:  <span id="day1-humidity"></span></p>
+                        </div>
+                    </div>
+                    <div class="card col" id="day2">
+                        <div class="card-body">
+                            <h4 id="day2-date"></h4>
+                            <img id="day2-weather-icon">
+                            <p>Temp:  <span id="day2-temperature"></span></p>
+                            <p>Humidty:  <span id="day2-humidity"></span></p>
+                        </div>
+                    </div>
+                    <div class="card col" id="day3">
+                        <div class="card-body">
+                            <h4 id="day3-date"></h4>
+                            <img id="day3-weather-icon">
+                            <p>Temp:  <span id="day3-temperature"></span></p>
+                            <p>Humidty:  <span id="day3-humidity"></span></p>
+                        </div>
+                    </div>
+                    <div class="card col" id="day4">
+                        <div class="card-body">
+                            <h4 id="day4-date"></h4>
+                            <img id="day4-weather-icon">
+                            <p>Temp:  <span id="day4-temperature"></span></p>
+                            <p>Humidty:  <span id="day4-humidity"></span></p>
+                        </div>
+                    </div>
+                    <div class="card col" id="day5">
+                        <div class="card-body">
+                            <h4 id="day5-date"></h4>
+                            <img id="day5-weather-icon">
+                            <p>Temp:  <span id="day5-temperature"></span></p>
+                            <p>Humidty:  <span id="day5-humidity"></span></p>
+                        </div>
                     </div>
                 </div>
             </div>
