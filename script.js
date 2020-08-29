@@ -10,7 +10,8 @@ console.log("Searched Cities Array: ", searchedCitiesArray);
 // Set the page to load the last searched city
 window.onload = function() {
     if (searchedCitiesArray != null) {
-        ajaxCall()
+        var lastSearchedCity = searchedCitiesArray[searchedCitiesArray.length-1].city;
+        ajaxCall(lastSearchedCity);
     };
 };
 
@@ -40,15 +41,14 @@ $("#search-btn").on("click", function userSearch() {
     console.log(searchedCitiesArray);
     localStorage.setItem("searchedCities", JSON.stringify(searchedCitiesArray));
     // Fun ajaxCall function
-    ajaxCall();
+    ajaxCall(city);
 });
 
-function ajaxCall() {
-    var lastSearchedCity = searchedCitiesArray[searchedCitiesArray.length-1].city;
+function ajaxCall(cityName) {
     // Construct a url to search opencage to get the latitude and longitude coordinates for the city
-    var openCageQueryURL = "https://api.opencagedata.com/geocode/v1/json?q=" + lastSearchedCity + "&key=" + apiKeyOpenCage;
+    var openCageQueryURL = "https://api.opencagedata.com/geocode/v1/json?q=" + cityName + "&key=" + apiKeyOpenCage;
     // Perform first of two AJAX calls using $.when() to get user inputed city then latitude and longitude settings for weather information
-    $.when($.ajax({
+    $.ajax({
         url: openCageQueryURL,
         method: "GET"
     }).then(function(response) {
@@ -68,7 +68,7 @@ function ajaxCall() {
         }).then(function(response) {
             console.log("OpenWeather Response: ", response)
             // Set the city, date, and icon for user selected city current weather
-            $("#city-name").html(lastSearchedCity + " &#40;" + currentDay + "&#41; ");
+            $("#city-name").html(cityName + " &#40;" + currentDay + "&#41; ");
             // Set the current weather icon for user selected city
             var weatherIcon = $("<img>");
             weatherIcon.attr("src", "https://openweathermap.org/img/wn/" + response.current.weather[0].icon + ".png");
@@ -133,7 +133,7 @@ function ajaxCall() {
             // Clear the input field
             $("#search-input").val("");
         });
-    }));
+    });
 };
 
 function showSearchedCities() {
@@ -156,6 +156,25 @@ function showSearchedCities() {
 
 // Call showSearchedCities function
 showSearchedCities();
+
+// Empty the searched cities
+function clearCitiesSearched() {
+    $("#city-list").empty();
+    localStorage.clear();
+    searchedCitiesArray = [];
+    location.reload();
+};
+
+// Click event for clearCitiesSearched function
+$("#clear-button").on("click", clearCitiesSearched);
+
+// Click for
+$("#city-list").on("click", ".list-new-city", function(event) {
+    event.preventDefault();
+    var cityName = $(this).data("value");
+    console.log(cityName);
+    ajaxCall(cityName);
+})
 
 /* TODO:
     - for future development
