@@ -14,6 +14,10 @@ body {
     font-weight: bold;
 }
 
+#city-search-section {
+    margin-bottom: 15px;
+}
+
 #city-search {
     padding: 0;
 }
@@ -22,7 +26,31 @@ body {
     padding: 0;
 }
 
+.list-new-city {
+    border: 1px solid black;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 #weather-city-selected {
     border: 1px solid black;
     border-radius: 5px;
+}
+
+#forecast-city-selected {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.card {
+    width: auto;
+    margin: 10px;
+    background-color: #3498DB;
+    color: white;
+    font-size: 15px;
+}
+
+.card-body {
+    padding: 5px;
 }
