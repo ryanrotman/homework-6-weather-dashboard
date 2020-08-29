@@ -1,39 +1,45 @@
 // Global variables for needed elements on the page
 var currentDay = moment().format("l");
 console.log("Current Day: " + currentDay);
-var searchedCitiesArray = [];
+// Variable for needed elements to build the queryURL
+var apiKeyOpenCage = "1eb9ab07096e4c45b12337969ad43d17"
+var apiKeyOpenWeather ="a7910a5735249739663f81c42f8319c2";
+var searchedCitiesArray = JSON.parse(localStorage.getItem("searchedCities")) || [];
+console.log("Searched Cities Array: ", searchedCitiesArray);
 
 // Click event for #search-btn
-$("#search-btn").on("click", function() {
+$("#search-btn").on("click", function userSearch() {
     event.preventDefault;
-    // Set variable for needed elements to build the queryURL
-    var apiKeyOpenCage = "1eb9ab07096e4c45b12337969ad43d17"
-    var apiKeyOpenWeather ="a7910a5735249739663f81c42f8319c2";
     var city = $("#search-input").val();
     // console.log the city
     console.log("User Search for: " + city);
-    // Clear the input field
-    $("#search-input").val("");
     // Add search to #city-list
     var newCitySearch = $("<div>");
     newCitySearch.addClass("row list-new-city");
     newCitySearch.attr("id", city + "-search");
+    newCitySearch.attr("data-value", city);
     newCitySearch.html('<a href="#">' + city + '</a>');
     $("#city-list").append(newCitySearch);
     // Saving search list to local storage
     var searchedCities = {
         "city": city,
     };
-    console.log(searchedCities);
-    var searchedCityList = JSON.parse(localStorage.getItem("searchedCities"));
-    if (searchedCityList == null ) {
-        searchedCityList = [];
+    console.log("Searched City: ", searchedCities);
+    searchedCitiesArray = JSON.parse(localStorage.getItem("searchedCities"));
+    if (searchedCitiesArray == null ) {
+        searchedCitiesArray = [];
     }
-    searchedCityList.push(searchedCities);
-    console.log(searchedCityList);
-    localStorage.setItem("searchedCities", JSON.stringify(searchedCityList));
+    searchedCitiesArray.push(searchedCities);
+    console.log(searchedCitiesArray);
+    localStorage.setItem("searchedCities", JSON.stringify(searchedCitiesArray));
+    // Fun ajaxCall function
+    ajaxCall();
+});
+
+function ajaxCall() {
+    var lastSearchedCity = searchedCitiesArray[searchedCitiesArray.length-1].city;
     // Construct a url to search opencage to get the latitude and longitude coordinates for the city
-    var openCageQueryURL = "https://api.opencagedata.com/geocode/v1/json?q=" + city + "&key=" + apiKeyOpenCage;
+    var openCageQueryURL = "https://api.opencagedata.com/geocode/v1/json?q=" + lastSearchedCity + "&key=" + apiKeyOpenCage;
     // Perform first of two AJAX calls using $.when() to get user inputed city then latitude and longitude settings for weather information
     $.when($.ajax({
         url: openCageQueryURL,
@@ -55,7 +61,7 @@ $("#search-btn").on("click", function() {
         }).then(function(response) {
             console.log("OpenWeather Response: ", response)
             // Set the city, date, and icon for user selected city current weather
-            $("#city-name").html(city + " &#40;" + currentDay + "&#41; ");
+            $("#city-name").html(lastSearchedCity + " &#40;" + currentDay + "&#41; ");
             // Set the current weather icon for user selected city
             var weatherIcon = $("<img>");
             weatherIcon.attr("src", "https://openweathermap.org/img/wn/" + response.current.weather[0].icon + ".png");
@@ -117,18 +123,25 @@ $("#search-btn").on("click", function() {
             $("#day3-humidity").html(response.daily[2].humidity + "&#37;");
             $("#day4-humidity").html(response.daily[3].humidity + "&#37;");
             $("#day5-humidity").html(response.daily[4].humidity + "&#37;");
+            // Clear the input field
+            $("#search-input").val("");
         });
     }));
-});
+};
 
 function showSearchedCities() {
-    searchedCitiesArray = JSON.parse(localStorage.getItem("searchedCities"));
-    console.log("Searched Cities Array: ", searchedCitiesArray);
     if (searchedCitiesArray != null) {
         for (var i = 0; i < searchedCitiesArray.length; i++) {
             var searchedCity = searchedCitiesArray[i];
             console.log("Selected City from Array: ", searchedCity);
             var citySearched = searchedCity.city;
+            // Add search to #city-list
+            var newCitySearch = $("<div>");
+            newCitySearch.addClass("row list-new-city");
+            newCitySearch.attr("id", citySearched + "-search");
+            newCitySearch.attr("data-value", citySearched);
+            newCitySearch.html('<a href="#">' + citySearched + '</a>');
+            $("#city-list").append(newCitySearch);
             $(citySearched + "-search").html('<a href="#">' + citySearched + '</a>');
         };
     };
