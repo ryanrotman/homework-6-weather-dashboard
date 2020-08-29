@@ -7,6 +7,13 @@ var apiKeyOpenWeather ="a7910a5735249739663f81c42f8319c2";
 var searchedCitiesArray = JSON.parse(localStorage.getItem("searchedCities")) || [];
 console.log("Searched Cities Array: ", searchedCitiesArray);
 
+// Set the page to load the last searched city
+window.onload = function() {
+    if (searchedCitiesArray != null) {
+        ajaxCall()
+    };
+};
+
 // Click event for #search-btn
 $("#search-btn").on("click", function userSearch() {
     event.preventDefault;
