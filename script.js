@@ -180,5 +180,7 @@ $("#city-list").on("click", ".list-new-city", function(event) {
     - for future development
         - make app more accurate by being able to grab weather info for exact city the user wants
         - adjust code that populate the 5-day forecast cards
-            - use loop to populate data?
+            - use loop to populate data
+        - if no cities have been searched, have the weather section either be clear or display-none until a city is searched for
+        - further styling for an even more cleaner look
 */
