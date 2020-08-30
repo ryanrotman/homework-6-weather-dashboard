@@ -96,6 +96,7 @@ function ajaxCall(cityName) {
             } else if (currentUVI >= 11) {
                 $("#uv-index").css("background-color", "violet");
             };
+            // FIXME: use a loop to populate the 5-day forecast data
             // Add date to forecast cards
             var day1Date = moment().add(1, "days").format("l");
             var day2Date = moment().add(2, "days").format("l");
@@ -179,8 +180,8 @@ $("#city-list").on("click", ".list-new-city", function(event) {
 /* TODO:
     - for future development
         - make app more accurate by being able to grab weather info for exact city the user wants
-        - adjust code that populate the 5-day forecast cards
-            - use loop to populate data
         - if no cities have been searched, have the weather section either be clear or display-none until a city is searched for
         - further styling for an even more cleaner look
+        - allow for search to happen when hitting the return key as well as the search button
+        - allow the whole <div> for already searched cities to be clickable
 */
