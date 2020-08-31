@@ -96,7 +96,6 @@ function ajaxCall(cityName) {
             } else if (currentUVI >= 11) {
                 $("#uv-index").css("background-color", "violet");
             };
-            // FIXME: use a loop to populate the 5-day forecast data
             // Loop to populate data in 5-day forecast cards
             for (var i = 0; i <= 4; i++) {
                 var dayNumber = i + 1;
@@ -111,6 +110,7 @@ function ajaxCall(cityName) {
                 var forecastHumidity = response.daily[i].humidity + "&#37;";
                 $("#day" + dayNumber + "-humidity").html(forecastHumidity);
             };
+            // FIXME: use a loop to populate the 5-day forecast data
             // Add date to forecast cards
             var day1Date = moment().add(1, "days").format("l");
             var day2Date = moment().add(2, "days").format("l");
