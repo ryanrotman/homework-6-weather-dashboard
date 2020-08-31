@@ -110,43 +110,43 @@ function ajaxCall(cityName) {
                 var forecastHumidity = response.daily[i].humidity + "&#37;";
                 $("#day" + dayNumber + "-humidity").html(forecastHumidity);
             };
-            // FIXME: use a loop to populate the 5-day forecast data
-            // Add date to forecast cards
-            var day1Date = moment().add(1, "days").format("l");
-            var day2Date = moment().add(2, "days").format("l");
-            var day3Date = moment().add(3, "days").format("l");
-            var day4Date = moment().add(4, "days").format("l");
-            var day5Date = moment().add(5, "days").format("l");
-            $("#day1-date").html(day1Date);
-            $("#day2-date").html(day2Date);
-            $("#day3-date").html(day3Date);
-            $("#day4-date").html(day4Date);
-            $("#day5-date").html(day5Date);
-            // Add weather icon to forecast cards
-            $("#day1-weather-icon").attr("src", "https://openweathermap.org/img/wn/" + response.daily[0].weather[0].icon + ".png");
-            $("#day1-weather-icon").attr("alt", response.daily[0].weather[0].description);
-            $("#day2-weather-icon").attr("src", "https://openweathermap.org/img/wn/" + response.daily[1].weather[0].icon + ".png");
-            $("#day2-weather-icon").attr("alt", response.daily[1].weather[0].description);
-            $("#day3-weather-icon").attr("src", "https://openweathermap.org/img/wn/" + response.daily[2].weather[0].icon + ".png");
-            $("#day3-weather-icon").attr("alt", response.daily[2].weather[0].description);
-            $("#day4-weather-icon").attr("src", "https://openweathermap.org/img/wn/" + response.daily[3].weather[0].icon + ".png");
-            $("#day4-weather-icon").attr("alt", response.daily[3].weather[0].description);
-            $("#day5-weather-icon").attr("src", "https://openweathermap.org/img/wn/" + response.daily[4].weather[0].icon + ".png");
-            $("#day5-weather-icon").attr("alt", response.daily[4].weather[0].description);
-            // Add temperature to forecast cards
-            $("#day1-temperature").html(response.daily[0].temp.max + " &#x2109;");
-            $("#day2-temperature").html(response.daily[1].temp.max + " &#x2109;");
-            $("#day3-temperature").html(response.daily[2].temp.max + " &#x2109;");
-            $("#day4-temperature").html(response.daily[3].temp.max + " &#x2109;");
-            $("#day5-temperature").html(response.daily[4].temp.max + " &#x2109;");
-            // Add humidity to forecast cards
-            $("#day1-humidity").html(response.daily[0].humidity + "&#37;");
-            $("#day2-humidity").html(response.daily[1].humidity + "&#37;");
-            $("#day3-humidity").html(response.daily[2].humidity + "&#37;");
-            $("#day4-humidity").html(response.daily[3].humidity + "&#37;");
-            $("#day5-humidity").html(response.daily[4].humidity + "&#37;");
-            // Clear the input field
-            $("#search-input").val("");
+            // // FIXME: use a loop to populate the 5-day forecast data
+            // // Add date to forecast cards
+            // var day1Date = moment().add(1, "days").format("l");
+            // var day2Date = moment().add(2, "days").format("l");
+            // var day3Date = moment().add(3, "days").format("l");
+            // var day4Date = moment().add(4, "days").format("l");
+            // var day5Date = moment().add(5, "days").format("l");
+            // $("#day1-date").html(day1Date);
+            // $("#day2-date").html(day2Date);
+            // $("#day3-date").html(day3Date);
+            // $("#day4-date").html(day4Date);
+            // $("#day5-date").html(day5Date);
+            // // Add weather icon to forecast cards
+            // $("#day1-weather-icon").attr("src", "https://openweathermap.org/img/wn/" + response.daily[0].weather[0].icon + ".png");
+            // $("#day1-weather-icon").attr("alt", response.daily[0].weather[0].description);
+            // $("#day2-weather-icon").attr("src", "https://openweathermap.org/img/wn/" + response.daily[1].weather[0].icon + ".png");
+            // $("#day2-weather-icon").attr("alt", response.daily[1].weather[0].description);
+            // $("#day3-weather-icon").attr("src", "https://openweathermap.org/img/wn/" + response.daily[2].weather[0].icon + ".png");
+            // $("#day3-weather-icon").attr("alt", response.daily[2].weather[0].description);
+            // $("#day4-weather-icon").attr("src", "https://openweathermap.org/img/wn/" + response.daily[3].weather[0].icon + ".png");
+            // $("#day4-weather-icon").attr("alt", response.daily[3].weather[0].description);
+            // $("#day5-weather-icon").attr("src", "https://openweathermap.org/img/wn/" + response.daily[4].weather[0].icon + ".png");
+            // $("#day5-weather-icon").attr("alt", response.daily[4].weather[0].description);
+            // // Add temperature to forecast cards
+            // $("#day1-temperature").html(response.daily[0].temp.max + " &#x2109;");
+            // $("#day2-temperature").html(response.daily[1].temp.max + " &#x2109;");
+            // $("#day3-temperature").html(response.daily[2].temp.max + " &#x2109;");
+            // $("#day4-temperature").html(response.daily[3].temp.max + " &#x2109;");
+            // $("#day5-temperature").html(response.daily[4].temp.max + " &#x2109;");
+            // // Add humidity to forecast cards
+            // $("#day1-humidity").html(response.daily[0].humidity + "&#37;");
+            // $("#day2-humidity").html(response.daily[1].humidity + "&#37;");
+            // $("#day3-humidity").html(response.daily[2].humidity + "&#37;");
+            // $("#day4-humidity").html(response.daily[3].humidity + "&#37;");
+            // $("#day5-humidity").html(response.daily[4].humidity + "&#37;");
+            // // Clear the input field
+            // $("#search-input").val("");
         });
     });
 };
