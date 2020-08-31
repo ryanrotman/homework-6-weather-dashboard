@@ -97,6 +97,20 @@ function ajaxCall(cityName) {
                 $("#uv-index").css("background-color", "violet");
             };
             // FIXME: use a loop to populate the 5-day forecast data
+            // Loop to populate data in 5-day forecast cards
+            for (var i = 0; i <= 4; i++) {
+                var dayNumber = i + 1;
+                var date = moment().add(dayNumber, "days").format("l");
+                $("#day" + dayNumber + "-date").html(date);
+                var weatherIconSrc = response.daily[i].weather[0].icon;
+                var weatherDescription = response.daily[i].weather[0].description;
+                $("#day" + dayNumber + "-weather-icon").attr("src", "https://openweathermap.org/img/wn/" + weatherIconSrc + ".png");
+                $("#day" + dayNumber + "-weather-icon").attr("alt", weatherDescription);
+                var forecastTemp = response.daily[i].temp.max + "&#x2109;";
+                $("#day" + dayNumber + "-temperature").html(forecastTemp);
+                var forecastHumidity = response.daily[i].humidity + "&#37;";
+                $("#day" + dayNumber + "-humidity").html(forecastHumidity);
+            };
             // Add date to forecast cards
             var day1Date = moment().add(1, "days").format("l");
             var day2Date = moment().add(2, "days").format("l");
